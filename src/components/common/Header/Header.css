@@ -1,0 +1,99 @@
+.header {
+  background-color: white;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: box-shadow var(--transition-fast);
+}
+
+.header--sticky {
+  box-shadow: var(--shadow-md);
+}
+
+.header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) 0;
+  gap: var(--spacing-lg);
+}
+
+.header__logo-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.header__logo-link:hover {
+  color: var(--color-text-primary);
+}
+
+.header__logo-icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-sm);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.header__logo-text {
+  font-family: var(--font-family-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Hamburger Menu */
+.header__hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.header__hamburger-line {
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-text-primary);
+  border-radius: 2px;
+  transition: all var(--transition-fast);
+}
+
+.header__hamburger:hover .header__hamburger-line {
+  background-color: var(--color-primary);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .header__logo-text {
+    font-size: 1rem;
+  }
+
+  .header__logo-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .header__hamburger {
+    display: none;
+  }
+
+  .header__content {
+    padding: var(--spacing-lg) 0;
+  }
+}

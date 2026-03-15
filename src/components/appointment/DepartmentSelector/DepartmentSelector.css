@@ -1,0 +1,148 @@
+.department-selector {
+  width: 100%;
+}
+
+.department-selector__title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+  text-align: center;
+}
+
+.department-selector__subtitle {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.department-selector__search {
+  margin-bottom: var(--spacing-lg);
+}
+
+.department-selector__search-input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  transition: border-color 0.2s ease;
+}
+
+.department-selector__search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.department-selector__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.department-card {
+  background: white;
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--spacing-lg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.department-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.department-card:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.department-card.selected {
+  border-color: var(--color-primary);
+  background: rgba(16, 185, 129, 0.05);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.department-card__icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.department-card__name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+}
+
+.department-card__description {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.department-card__hours {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-border);
+}
+
+.department-card__hours-item {
+  margin-bottom: var(--spacing-xs);
+}
+
+.department-card__hours-item:last-child {
+  margin-bottom: 0;
+}
+
+.department-selector__empty {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--color-text-secondary);
+}
+
+/* Mobile responsive */
+@media (max-width: 767px) {
+  .department-selector__title {
+    font-size: 1.5rem;
+  }
+
+  .department-selector__subtitle {
+    font-size: 0.875rem;
+  }
+
+  .department-selector__grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .department-card {
+    padding: var(--spacing-md);
+  }
+
+  .department-card__icon {
+    font-size: 2.5rem;
+  }
+
+  .department-card__name {
+    font-size: 1.125rem;
+  }
+}
+
+/* Tablet responsive */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .department-selector__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "hospital-website",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Hospital website with appointment booking system",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["hospital", "react", "appointment-booking"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.1.4",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-hook-form": "^7.71.2",
+    "react-router-dom": "^7.13.1",
+    "vite": "^7.3.1"
+  }
+}

@@ -1,0 +1,96 @@
+.patient-info-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.patient-info-form__title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+  text-align: center;
+}
+
+.patient-info-form__subtitle {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.patient-info-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.form-label .required {
+  color: var(--color-error);
+}
+
+.form-input {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  min-height: 44px;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.form-input.error {
+  border-color: var(--color-error);
+}
+
+.form-input.error:focus {
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.form-error {
+  font-size: 0.875rem;
+  color: var(--color-error);
+  margin-top: var(--spacing-xs);
+}
+
+.form-hint {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-xs);
+}
+
+/* Mobile responsive */
+@media (max-width: 767px) {
+  .patient-info-form__title {
+    font-size: 1.5rem;
+  }
+
+  .patient-info-form__subtitle {
+    font-size: 0.875rem;
+  }
+
+  .patient-info-form__form {
+    gap: var(--spacing-md);
+  }
+
+  .form-input {
+    font-size: 0.9375rem;
+  }
+}

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Testing Tool - Hospital Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #10B981;
+            color: white;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .controls {
+            padding: 20px;
+            background: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .control-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #1f2937;
+            min-width: 100px;
+        }
+
+        button {
+            background: #10B981;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #059669;
+        }
+
+        button.secondary {
+            background: #6b7280;
+        }
+
+        button.secondary:hover {
+            background: #4b5563;
+        }
+
+        .iframe-container {
+            position: relative;
+            background: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 600px;
+        }
+
+        .device-frame {
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        iframe {
+            border: none;
+            display: block;
+            background: white;
+        }
+
+        .info-panel {
+            padding: 20px;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .info-item {
+            background: white;
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-item strong {
+            display: block;
+            color: #6b7280;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .info-item span {
+            color: #1f2937;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status.mobile {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status.tablet {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status.desktop {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .checklist {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 4px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .checklist h3 {
+            margin-bottom: 15px;
+            color: #1f2937;
+        }
+
+        .checklist-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checklist-item label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .rotation-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 Hospital Website - Responsive Testing Tool</h1>
+            <p>Test the application across different devices and screen sizes</p>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Device Presets:</label>
+                <button onclick="setSize(375, 667, 'portrait')">iPhone SE</button>
+                <button onclick="setSize(390, 844, 'portrait')">iPhone 14</button>
+                <button onclick="setSize(430, 932, 'portrait')">iPhone 14 Pro Max</button>
+                <button onclick="setSize(360, 640, 'portrait')">Android Small</button>
+                <button onclick="setSize(412, 915, 'portrait')">Pixel 5</button>
+                <button onclick="setSize(768, 1024, 'portrait')">iPad</button>
+                <button onclick="setSize(1024, 768, 'landscape')">iPad Landscape</button>
+            </div>
+
+            <div class="control-group">
+                <label>Breakpoints:</label>
+                <button onclick="setSize(320, 568, 'portrait')">320px (Min)</button>
+                <button onclick="setSize(767, 600, 'portrait')">767px (Mobile Max)</button>
+                <button onclick="setSize(768, 600, 'portrait')">768px (Tablet Min)</button>
+                <button onclick="setSize(1023, 600, 'portrait')">1023px (Tablet Max)</button>
+                <button onclick="setSize(1024, 768, 'landscape')">1024px (Desktop Min)</button>
+                <button onclick="setSize(1440, 900, 'landscape')">1440px</button>
+                <button onclick="setSize(2560, 1440, 'landscape')">2560px (Max)</button>
+            </div>
+
+            <div class="control-group">
+                <label>Actions:</label>
+                <button onclick="rotateDevice()">🔄 Rotate Device</button>
+                <button class="secondary" onclick="resetSize()">Reset to Desktop</button>
+                <button class="secondary" onclick="reloadIframe()">Reload</button>
+            </div>
+        </div>
+
+        <div class="iframe-container">
+            <div class="device-frame" id="deviceFrame">
+                <iframe id="testFrame" src="http://localhost:5173" width="1440" height="900"></iframe>
+            </div>
+            <div class="rotation-indicator" id="rotationIndicator" style="display: none;">
+                Rotating...
+            </div>
+        </div>
+
+        <div class="info-panel">
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong>Current Width</strong>
+                    <span id="currentWidth">1440px</span>
+                </div>
+                <div class="info-item">
+                    <strong>Current Height</strong>
+                    <span id="currentHeight">900px</span>
+                </div>
+                <div class="info-item">
+                    <strong>Breakpoint</strong>
+                    <span id="breakpoint" class="status desktop">Desktop</span>
+                </div>
+                <div class="info-item">
+                    <strong>Orientation</strong>
+                    <span id="orientation">Landscape</span>
+                </div>
+            </div>
+
+            <div class="checklist">
+                <h3>✅ Testing Checklist</h3>
+                <div class="checklist-item">
+                    <label>
+                        <input type="checkbox" id="check1">
+                        Mobile layout (< 768px) displays correctly
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <label>
+                        <input type="checkbox" id="check2">
+                        Tablet layout (768-1023px) displays correctly
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <label>
+                        <input type="checkbox" id="check3">
+                        Desktop layout (≥ 1024px) displays correctly
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <label>
+                        <input type="checkbox" id="check4">
+                        Navigation menu adapts to screen size
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <label>
+                        <input type="checkbox" id="check5">
+                        Grid layouts adjust correctly (1/2/3 columns)
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <label>
+                        <input type="checkbox" id="check6">
+                        Touch targets are minimum 44px on mobile
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <label>
+                        <input type="checkbox" id="check7">
+                        Typography scales appropriately
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <label>
+                        <input type="checkbox" id="check8">
+                        Device rotation works smoothly (< 500ms)
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <label>
+                        <input type="checkbox" id="check9">
+                        All functionality works at 320px width
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <label>
+                        <input type="checkbox" id="check10">
+                        All functionality works at 2560px width
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const iframe = document.getElementById('testFrame');
+        const deviceFrame = document.getElementById('deviceFrame');
+        const rotationIndicator = document.getElementById('rotationIndicator');
+        let currentOrientation = 'landscape';
+
+        function setSize(width, height, orientation) {
+            currentOrientation = orientation;
+            iframe.width = width;
+            iframe.height = height;
+            updateInfo(width, height, orientation);
+        }
+
+        function updateInfo(width, height, orientation) {
+            document.getElementById('currentWidth').textContent = width + 'px';
+            document.getElementById('currentHeight').textContent = height + 'px';
+            document.getElementById('orientation').textContent = 
+                orientation.charAt(0).toUpperCase() + orientation.slice(1);
+
+            const breakpointEl = document.getElementById('breakpoint');
+            if (width < 768) {
+                breakpointEl.textContent = 'Mobile';
+                breakpointEl.className = 'status mobile';
+            } else if (width >= 768 && width < 1024) {
+                breakpointEl.textContent = 'Tablet';
+                breakpointEl.className = 'status tablet';
+            } else {
+                breakpointEl.textContent = 'Desktop';
+                breakpointEl.className = 'status desktop';
+            }
+        }
+
+        function rotateDevice() {
+            const currentWidth = parseInt(iframe.width);
+            const currentHeight = parseInt(iframe.height);
+            
+            // Show rotation indicator
+            rotationIndicator.style.display = 'block';
+            
+            // Add rotation animation
+            deviceFrame.style.transform = 'rotate(90deg) scale(0.9)';
+            deviceFrame.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                // Swap dimensions
+                const newOrientation = currentOrientation === 'portrait' ? 'landscape' : 'portrait';
+                setSize(currentHeight, currentWidth, newOrientation);
+                
+                // Reset animation
+                deviceFrame.style.transform = 'rotate(0deg) scale(1)';
+                deviceFrame.style.opacity = '1';
+                
+                // Hide rotation indicator
+                setTimeout(() => {
+                    rotationIndicator.style.display = 'none';
+                }, 300);
+            }, 300);
+        }
+
+        function resetSize() {
+            setSize(1440, 900, 'landscape');
+        }
+
+        function reloadIframe() {
+            iframe.src = iframe.src;
+        }
+
+        // Initialize
+        updateInfo(1440, 900, 'landscape');
+
+        // Save checklist state
+        const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                localStorage.setItem(checkbox.id, checkbox.checked);
+            });
+            
+            // Load saved state
+            const saved = localStorage.getItem(checkbox.id);
+            if (saved === 'true') {
+                checkbox.checked = true;
+            }
+        });
+    </script>
+</body>
+</html>

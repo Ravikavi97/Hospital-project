@@ -1,0 +1,29 @@
+.lazy-image {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-neutral-light);
+}
+
+.lazy-image__placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-neutral-light);
+}
+
+.lazy-image__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.lazy-image__img.loaded {
+  opacity: 1;
+}
